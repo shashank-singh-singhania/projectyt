@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { IoMdHome } from "react-icons/io";
+import { FaSearch } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
+import { RiArrowDownSLine } from "react-icons/ri";
+import { FaArrowLeftLong } from "react-icons/fa6";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,16 +16,32 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`bg-gray-800 h-screen fixed left-0 top-0 transition-all duration-300 ${isOpen ? 'w-64' : 'w-16'}`}>
+    <nav
+      className={`bg-gray-800 h-screen fixed left-0 top-0 transition-all duration-300 ${
+        isOpen ? "w-64" : "w-16"
+      }`}
+    >
       <div className="p-4">
-        <a href="/" className="text-white text-xl font-semibold">
-          🏠
+        {isOpen ? <div className="flex justify-center items-center text-white mb-10">
+          <h1 className=" text-2xl font-semibold">GTC</h1>
+        </div> : <div className="flex justify-center items-center text-white mb-10">
+        <IoIosArrowDown size={50} />
+        </div>}
+        {/* <div className="flex justify-center items-center text-white mb-10">
+          <IoIosArrowDown size={50} />
+        </div> */}
+
+        <a
+          href="/"
+          className="text-white text-xl font-semibold flex justify-center items-center"
+        >
+          <IoMdHome />
         </a>
       </div>
       <div className="p-4">
         <div className="relative">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg
+          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white mt-3">
+            {/* <svg
               className="h-5 w-5 text-gray-500 cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -31,16 +53,26 @@ const Navbar = () => {
                 fillRule="evenodd"
                 d="M9 1a8 8 0 0 1 5.54 13.54l5.16 5.16a1 1 0 0 1-1.42 1.42l-5.16-5.16A8 8 0 1 1 9 1zm0 2a6 6 0 1 0 0 12A6 6 0 0 0 9 3z"
               />
-            </svg>
+            </svg> */}
+
+            {isOpen ? <h1></h1> : <FaSearch className="cursor-pointer" onClick={toggleNavbar} /> }
+            {/* <FaSearch onClick={toggleNavbar} /> */}
+
           </span>
           <input
             type="text"
-            className={`block w-full bg-gray-900 border border-gray-700 rounded-md py-2 pl-10 pr-4 text-sm leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${isOpen ? 'block' : 'hidden'}`}
+            className={`block w-full bg-gray-900 border border-gray-700 rounded-md py-2 pl-10 pr-4 text-sm leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${
+              isOpen ? "block" : "hidden"
+            }`}
             placeholder="Search"
             onFocus={() => setIsOpen(true)}
             onBlur={() => setIsOpen(false)}
           />
+          {isOpen ? <div className="flex justify-center items-center mt-8 text-white cursor-pointer"><FaArrowLeftLong onClick={() => setIsOpen(false)} /></div>  : <h1></h1>  }
+           
         </div>
+    
+
       </div>
     </nav>
   );
@@ -51,7 +83,8 @@ const MainContent = () => {
     <div className="ml-16 lg:ml-64 p-8">
       <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       <p className="mb-4">
-        Welcome to the dashboard! Here you can find a variety of features and information.
+        Welcome to the dashboard! Here you can find a variety of features and
+        information.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded shadow">

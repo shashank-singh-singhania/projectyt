@@ -90,7 +90,7 @@ const VideoList = () => {
 
     try {
       // Find the selected playlist
-      const selectedPlaylist = playlists.find(playlist => playlist._id === playlistId);
+      const selectedPlaylist:any = playlists.find((playlist:any) => playlist._id === playlistId);
       // Add the video ID to the link array
       const updatedLinks = [...selectedPlaylist.link, videoId];
 
@@ -108,7 +108,7 @@ const VideoList = () => {
 
       console.log(`Video ${videoId} added to playlist ${playlistId}`);
       // Optionally, update local state to reflect changes
-      setPlaylists(playlists.map(playlist => playlist._id === playlistId ? { ...playlist, link: updatedLinks } : playlist));
+      setPlaylists(playlists.map((playlist:any) => playlist._id === playlistId ? { ...playlist, link: updatedLinks } : playlist));
     } catch (error) {
       console.log("Error saving video to playlist", error);
     }

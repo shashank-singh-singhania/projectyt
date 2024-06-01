@@ -13,8 +13,28 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      scrollbarHide: {
+        '&::-webkit-scrollbar': {
+          display: 'none',
+        },
+        '-ms-overflow-style': 'none',  // Internet Explorer 10+
+        'scrollbar-width': 'none',  // Firefox
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }:any) {
+      addUtilities({
+        '.scrollbar-hide': {
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+        },
+      });
+    },
+  ],
 };
+
 export default config;

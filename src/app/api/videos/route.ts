@@ -3,9 +3,9 @@ import Video from "@/models/video.model"
 import { NextResponse } from "next/server"
 
 export async function POST(request:any) {
-    const {title, description,img} = await request.json()
+    const {title, description,img,videoLink} = await request.json()
     await connectMongoDB()
-    await Video.create({title,description,img})
+    await Video.create({title,description,img,videoLink})
     return NextResponse.json({message:"Video Added to DB"})
 }
 

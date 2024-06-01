@@ -4,10 +4,10 @@ import Playlist from "@/models/playlist.model"
 import { NextResponse } from "next/server"
 
 export async function POST(request:any) {
-    const {title, link,img} = await request.json()
-    console.log(title,link,img)
+    const {title, link,img,subject} = await request.json()
+    console.log(title,link,img,subject)
     await connectMongoDB()
-    await Playlist.create({title,link,img})
+    await Playlist.create({title,link,img,subject})
     return NextResponse.json({message:"Playlist Added to DB"})
 }
 
