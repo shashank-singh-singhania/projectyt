@@ -93,14 +93,14 @@ const MainLayout: React.FC = () => {
           <>
             <div className="text-white mt-16 md:mt-48">
               <h1 className="text-3xl md:text-6xl font-bold text-center md:text-left">
-                Indefinite Integration
+                Explore JEE
               </h1>
-              <p className="mt-4 max-w-md text-center md:text-left text-1xl p-3 md:p-0">
-                Indefinite integration is the process of finding the antiderivative of a function, essentially reversing differentiation. It results in an indefinite integral representing all possible antiderivatives of the function.
+              <p className="mt-4 max-w-lg text-center md:text-left text-1xl p-3 md:p-0">
+              Get the most important videos and playlists for JEE preparation, curated through a survey of JEE aspirants. These resources have been selected based on feedback from students who have successfully navigated the JEE exam, ensuring they cover the essential topics and strategies needed for success.
               </p>
               <div className="mt-8 text-center md:text-left">
                 <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-4">
-                  Play
+                  About
                 </button>
                 <button className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">
                   <Link href="/allplaylist">All Playlists</Link>
@@ -109,7 +109,7 @@ const MainLayout: React.FC = () => {
             </div>
 
             <div className="mt-12 mx-auto">
-              <h2 className="text-2xl font-bold text-white mb-4 text-center md:text-left">Videos</h2>
+              <h2 className="text-2xl font-bold text-white mb-4 text-center md:text-left">Recommended Videos</h2>
               <div className="flex flex-wrap gap-4 md:gap-8 px-6 md:px-0">
                 {videos.map((video) => (
                   <Link key={video._id} href={`/video/${video._id}`}>
@@ -120,7 +120,7 @@ const MainLayout: React.FC = () => {
             </div>
 
             <div className="mt-8">
-              <h2 className="text-2xl font-bold text-white mb-4 text-center md:text-left">Playlists</h2>
+              <h2 className="text-2xl font-bold text-white mb-4 text-center md:text-left">Recommended Playlists</h2>
               <div className="flex flex-wrap gap-4 md:gap-8 px-6 md:px-0">
                 {playlists.map((playlist) => (
                   <Link key={playlist._id} href={`/playlist/${playlist._id}`}>

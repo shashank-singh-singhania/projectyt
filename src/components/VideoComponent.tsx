@@ -1,7 +1,6 @@
 import React from 'react';
 
 
-
 const VideoComponent = ({ video }:any) => {
   return (
     <div className="w-72  bg-neutral-950 rounded-lg overflow-hidden shadow-lg">

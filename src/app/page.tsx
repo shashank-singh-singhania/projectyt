@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
 
-
 export default function Home() {
   return (
     <div className="bg-black h-screen">
@@ -17,10 +16,9 @@ export default function Home() {
       <Link href={'/dashboard/allplaylist'} className="bg-blue-300 p-2 rounded-lg">All Playlists</Link>
       </div> */}
 
-<div className="">
-{/* <Navbar/> */}
-      <MainLayout/>
-</div>
+      <div className="">
+        <MainLayout />
+      </div>
     </div>
   );
 }

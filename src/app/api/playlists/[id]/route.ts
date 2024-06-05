@@ -138,6 +138,7 @@ export async function DELETE(request:any,{params}:any) {
   try {
     await connectMongoDB();
     const playlist = await Playlist.findById(id);
+    // await Playlist.findByIdAndDelete(id)
 
     if (!playlist) {
       return NextResponse.json({ error: "Playlist not found" }, { status: 404 });

@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import { IoMdHome } from "react-icons/io";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
-import { RiArrowDownSLine } from "react-icons/ri";
+
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { MdOutlinePlaylistPlay } from "react-icons/md";
+
 import { RiPlayList2Fill } from "react-icons/ri";
 import { FaCircleQuestion } from "react-icons/fa6";
 
@@ -74,7 +74,7 @@ const Navbar = () => {
             ) : (
               <FaSearch className="cursor-pointer" onClick={toggleNavbar} />
             )}
-            {/* <FaSearch onClick={toggleNavbar} /> */}
+            
           </span>
           <input
             type="text"
@@ -98,31 +98,7 @@ const Navbar = () => {
   );
 };
 
-const MainContent = () => {
-  return (
-    <div className="ml-16 lg:ml-64 p-8">
-      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-      <p className="mb-4">
-        Welcome to the dashboard! Here you can find a variety of features and
-        information.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div className="bg-white p-4 rounded shadow">
-          <h2 className="text-xl font-semibold mb-2">Card 1</h2>
-          <p>Some content for the first card.</p>
-        </div>
-        <div className="bg-white p-4 rounded shadow">
-          <h2 className="text-xl font-semibold mb-2">Card 2</h2>
-          <p>Some content for the second card.</p>
-        </div>
-        <div className="bg-white p-4 rounded shadow">
-          <h2 className="text-xl font-semibold mb-2">Card 3</h2>
-          <p>Some content for the third card.</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+
 
 const App = () => {
   return (

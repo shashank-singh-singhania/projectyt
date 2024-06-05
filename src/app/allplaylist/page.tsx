@@ -75,7 +75,7 @@ const Page: React.FC = () => {
       <div className="">
         <div
           className="w-full bg-fixed bg-left-top bg-no-repeat bg-gray-950"
-          style={{ backgroundImage: "url('http://localhost:3000/bg.jp')" }}
+          // style={{ backgroundImage: "url('http://localhost:3000/bg.jp')" }}
         >
           <div className="min-h-screen p-4">
             <div className="container mx-auto">
