@@ -18,7 +18,7 @@ export default function Home() {
       </div> */}
 
 <div className="">
-
+{/* <Navbar/> */}
       <MainLayout/>
 </div>
     </div>

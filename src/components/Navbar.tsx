@@ -6,7 +6,11 @@ import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { MdOutlinePlaylistPlay } from "react-icons/md";
+import { RiPlayList2Fill } from "react-icons/ri";
+import { FaCircleQuestion } from "react-icons/fa6";
 
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,25 +22,35 @@ const Navbar = () => {
   return (
     <nav
       className={`bg-gray-800 h-screen fixed left-0 top-0 transition-all duration-300 ${
-        isOpen ? "w-64" : "w-16"
+        isOpen ? "w-44" : "w-16"
       }`}
     >
       <div className="p-4">
-        {isOpen ? <div className="flex justify-center items-center text-white mb-10">
-          <h1 className=" text-2xl font-semibold">GTC</h1>
-        </div> : <div className="flex justify-center items-center text-white mb-10">
-        <IoIosArrowDown size={50} />
-        </div>}
-        {/* <div className="flex justify-center items-center text-white mb-10">
-          <IoIosArrowDown size={50} />
-        </div> */}
+        {isOpen ? (
+          <div className="flex justify-center items-center text-white mb-10">
+            <h1 className=" text-2xl font-semibold">GTC</h1>
+          </div>
+        ) : (
+          <div className="flex justify-center items-center text-white mb-10">
+            <IoIosArrowDown size={50} />
+          </div>
+        )}
 
-        <a
+        <Link
           href="/"
           className="text-white text-xl font-semibold flex justify-center items-center"
         >
-          <IoMdHome />
-        </a>
+          <IoMdHome size={25} />
+        </Link>
+
+        <Link href="/allplaylist" className="flex justify-center items-center text-white  mt-7">
+          <RiPlayList2Fill size={20} />
+        </Link>
+
+        <Link href="/about" className="flex justify-center items-center text-white  mt-7">
+          <FaCircleQuestion  size={20} />
+        </Link>
+
       </div>
       <div className="p-4">
         <div className="relative">
@@ -55,9 +69,12 @@ const Navbar = () => {
               />
             </svg> */}
 
-            {isOpen ? <h1></h1> : <FaSearch className="cursor-pointer" onClick={toggleNavbar} /> }
+            {isOpen ? (
+              <h1></h1>
+            ) : (
+              <FaSearch className="cursor-pointer" onClick={toggleNavbar} />
+            )}
             {/* <FaSearch onClick={toggleNavbar} /> */}
-
           </span>
           <input
             type="text"
@@ -68,11 +85,14 @@ const Navbar = () => {
             onFocus={() => setIsOpen(true)}
             onBlur={() => setIsOpen(false)}
           />
-          {isOpen ? <div className="flex justify-center items-center mt-8 text-white cursor-pointer"><FaArrowLeftLong onClick={() => setIsOpen(false)} /></div>  : <h1></h1>  }
-           
+          {isOpen ? (
+            <div className="flex justify-center items-center mt-8 text-white cursor-pointer">
+              <FaArrowLeftLong onClick={() => setIsOpen(false)} />
+            </div>
+          ) : (
+            <h1></h1>
+          )}
         </div>
-    
-
       </div>
     </nav>
   );

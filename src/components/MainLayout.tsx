@@ -1,10 +1,30 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Navbar from "./Navbar";
-import VideoComponent from "./VideoComponent";
-import PlaylistComponent from "./PlaylistComponent";
+import Navbar from "@/components/Navbar";
+import VideoComponent from "@/components/VideoComponent";
+import PlaylistComponent from "@/components/PlaylistComponent";
 import Link from "next/link";
+import MobileNavbar from "@/components/MobileNavbar";
+// import Loader from "@/components/Loader"; // Assume you have a Loader component
 
+// Type definitions
+interface Video {
+  _id: string;
+  title: string;
+  description: string;
+  img: string;
+  videoLink: string;
+}
+
+interface Playlist {
+  _id: string;
+  title: string;
+  link: Video[];
+  img: string;
+  subject: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 // Fetch Videos
 const getVideos = async () => {
@@ -17,7 +37,8 @@ const getVideos = async () => {
     }
     return res.json();
   } catch (error) {
-    console.log("Error Loading Videos", error);
+    console.error("Error Loading Videos", error);
+    return { Videos: [] };
   }
 };
 
@@ -32,13 +53,15 @@ const getPlaylists = async () => {
     }
     return res.json();
   } catch (error) {
-    console.log("Error Loading Playlists", error);
+    console.error("Error Loading Playlists", error);
+    return { Playlists: [] };
   }
 };
 
-const MainLayout = () => {
-  const [videos, setVideos] = useState([]);
-  const [playlists, setPlaylists] = useState([]);
+const MainLayout: React.FC = () => {
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [playlists, setPlaylists] = useState<Playlist[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,6 +69,7 @@ const MainLayout = () => {
       const playlistData = await getPlaylists();
       setVideos(videoData.Videos);
       setPlaylists(playlistData.Playlists);
+      setLoading(false);
     };
 
     fetchData();
@@ -53,143 +77,63 @@ const MainLayout = () => {
 
   return (
     <div
-      className="w-full  bg-fixed bg-left-top  bg-no-repeat bg-black"
+      className="w-full bg-fixed bg-left-top bg-no-repeat bg-black"
       style={{ backgroundImage: "url('http://localhost:3000/bg1.png')" }}
     >
-      <Navbar />
-      <div className=" p-8 px-40 ">
+      <MobileNavbar />
+      <div className="hidden md:block">
+        <Navbar />
+      </div>
+      <div className="p-4 md:p-8 md:px-40">
+        {loading ? (
+         <div className=" h-screen text-white flex justify-center items-center">
+         <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-white"></div>
+       </div> // Display loader while fetching data
+        ) : (
+          <>
+            <div className="text-white mt-16 md:mt-48">
+              <h1 className="text-3xl md:text-6xl font-bold text-center md:text-left">
+                Indefinite Integration
+              </h1>
+              <p className="mt-4 max-w-md text-center md:text-left text-1xl p-3 md:p-0">
+                Indefinite integration is the process of finding the antiderivative of a function, essentially reversing differentiation. It results in an indefinite integral representing all possible antiderivatives of the function.
+              </p>
+              <div className="mt-8 text-center md:text-left">
+                <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-4">
+                  Play
+                </button>
+                <button className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">
+                  <Link href="/allplaylist">All Playlists</Link>
+                </button>
+              </div>
+            </div>
 
-        <div className="text-white mt-48">
-          <h1 className="text-6xl font-bold">Indefinite Integration</h1>
-          <p className="mt-4 max-w-md">
-            Indefinite integration is the process of finding the antiderivative
-            of a function, essentially reversing differentiation. It results in
-            an indefinite integral representing all possible antiderivatives of
-            the function.
-          </p>
-          <div className="mt-8">
-            <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-4">
-              Play
-            </button>
-            <button className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">
-              <Link href={"/allplaylist"}>
+            <div className="mt-12 mx-auto">
+              <h2 className="text-2xl font-bold text-white mb-4 text-center md:text-left">Videos</h2>
+              <div className="flex flex-wrap gap-4 md:gap-8 px-6 md:px-0">
+                {videos.map((video) => (
+                  <Link key={video._id} href={`/video/${video._id}`}>
+                    <VideoComponent video={video} />
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-              All Playlists
-              </Link>
-            </button>
-          </div>
-        </div>
-
-        <div className="mt-12 ">
-          <h2 className="text-2xl font-bold text-white mb-4">Videos</h2>
-          <div className="flex gap-8 flex-wrap">
-          {videos.map((video:any) => (
-            <>
-            <Link href={`/video/${video._id}`}>
-              <VideoComponent key={video._id} video={video} />
-            </Link>
-            </>
-            ))}
-          </div>
-
-        </div>
-
-        <div className="mt-8">
-          <h2 className="text-2xl font-bold text-white mb-4">Playlists</h2>
-          <div className="flex gap-8 flex-wrap">
-
-          {playlists.map((playlists:any) => (
-            <>
-              <PlaylistComponent key={playlists._id} playlist={playlists}/>
-            </>
-            ))}
-
-          
-          </div>
-        </div>
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold text-white mb-4 text-center md:text-left">Playlists</h2>
+              <div className="flex flex-wrap gap-4 md:gap-8 px-6 md:px-0">
+                {playlists.map((playlist) => (
+                  <Link key={playlist._id} href={`/playlist/${playlist._id}`}>
+                    <PlaylistComponent playlist={playlist} />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
 };
 
 export default MainLayout;
-
-
-
-const video = [
-  {
-    id: 1,
-    title: "Indefinite Integration With Timestamps",
-    thumbnail: "https://via.placeholder.com/300x200",
-    url: "https://www.example.com/video1",
-  },
-  {
-    id: 2,
-    title: "Indefinite Integral One Shot",
-    thumbnail: "https://via.placeholder.com/300x200",
-    url: "https://www.example.com/video2",
-  },
-  {
-    id: 3,
-    title: "Integration for JEE 2024",
-    thumbnail: "https://via.placeholder.com/300x200",
-    url: "https://www.example.com/video3",
-  },
-  {
-    id: 4,
-    title: "Indefinite Integral for JEE Adv.",
-    thumbnail: "https://via.placeholder.com/300x200",
-    url: "https://www.example.com/video4",
-  },
-  {
-    id: 5,
-    title: "Indefinite Integration Practice Sheet",
-    thumbnail: "https://via.placeholder.com/300x200",
-    url: "https://www.example.com/video5",
-  },
-  {
-    id: 6,
-    title: "JEE Mains & Advanced Maths",
-    thumbnail: "https://via.placeholder.com/300x200",
-    url: "https://www.example.com/video6",
-  },
-];
-
-const playlist = [
-  {
-    id: 1,
-    title: "Integration One Shot",
-    thumbnail: "https://via.placeholder.com/300x200",
-    videos: 8,
-  },
-  {
-    id: 2,
-    title: "Indefinite Integration Concepts",
-    thumbnail: "https://via.placeholder.com/300x200",
-    videos: 7,
-  },
-  {
-    id: 3,
-    title: "Antiderivatives and Integrals",
-    thumbnail: "https://via.placeholder.com/300x200",
-    videos: 10,
-  },
-  {
-    id: 4,
-    title: "Indefinite Integration for Problem Solving",
-    thumbnail: "https://via.placeholder.com/300x200",
-    videos: 12,
-  },
-  {
-    id: 5,
-    title: "Indefinite Integral Lecture Series",
-    thumbnail: "https://via.placeholder.com/300x200",
-    videos: 5,
-  },
-  {
-    id: 6,
-    title: "Basic Integration Techniques",
-    thumbnail: "https://via.placeholder.com/300x200",
-    videos: 3,
-  },
-];
