@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Dashboard from "@/components/Dashboard";
-import { AppWrapper } from '@/context';
 
-const ProtectedRoute: React.FC = () => {
+const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
@@ -19,18 +19,14 @@ const ProtectedRoute: React.FC = () => {
   }, [router]);
 
   if (isLoading) {
-    return <div className="flex justify-center items-center min-h-screen bg-gray-900">
-    <div className="loader"></div>
-  </div>; // Show a loading state while checking authentication
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-gray-900">
+        <div className="loader"></div>
+      </div>
+    ); // Show a loading state while checking authentication
   }
 
-  return (
-    <div>
-      <AppWrapper>
-      <Dashboard />
-    </AppWrapper>
-    </div>
-  );
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;

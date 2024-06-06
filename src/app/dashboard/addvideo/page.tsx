@@ -1,6 +1,5 @@
 "use client";
 
-import AddBar from "@/components/AddBar";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import SideNav from "@/components/SideNav";
@@ -60,9 +59,9 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex">
       <SideNav />
-      <div className="flex-1 bg-gray-100 p-4 md:p-8">
+      <div className="flex-1 bg-gray-100 p-4 md:p-8 ml-64 h-screen"> {/* Adjust the margin-left */}
         <h1 className="text-3xl font-bold mb-8 text-center underline">Add New Video</h1>
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
           <div className="flex flex-col">
@@ -109,7 +108,7 @@ const Page: React.FC = () => {
           </div>
           {img && (
             <div className="flex flex-col items-center">
-              <img src={img} alt="Video Thumbnail" className=" h-auto object-cover rounded-lg" />
+              <img src={img} alt="Video Thumbnail" className="h-auto object-cover rounded-lg" />
             </div>
           )}
           <button

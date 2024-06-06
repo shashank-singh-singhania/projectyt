@@ -3,9 +3,9 @@
 // pages/page.tsx
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import SideNav from '@/components/SideNav';
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 const Page: React.FC = () => {
   const [title, setTitle] = useState('');
@@ -45,29 +45,13 @@ const Page: React.FC = () => {
   };
 
   return (
+    <ProtectedRoute>
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      {/* <div className="w-full md:w-64 bg-gray-900 text-white flex flex-col p-4">
-        <Link href={"/dashboard"} className="text-2xl font-bold mb-4 mx-auto underline">GTC</Link>
-        <nav className="flex flex-col space-y-2">
-          <Link href="/addtopic">
-            <h1 className="px-4 py-2 hover:bg-gray-700 rounded text-center block">Add Video</h1>
-          </Link>
-          <Link href="/addplaylist">
-            <h1 className="px-4 py-2 hover:bg-gray-700 rounded text-center block">Add Playlist</h1>
-          </Link>
-          <Link href="/dashboard/allvideo">
-            <h1 className="px-4 py-2 hover:bg-gray-700 rounded text-center block">All Videos</h1>
-          </Link>
-          <Link href="/dashboard/allplaylist">
-            <h1 className="px-4 py-2 hover:bg-gray-700 rounded text-center block">All Playlists</h1>
-          </Link>
-        </nav>
-      </div> */}
       <SideNav/>
 
       {/* Main Content */}
-      <div className="flex-1 bg-gray-100 p-4 md:p-8">
+      <div className="flex-1 bg-gray-100 p-4 md:p-8 ml-64">
         <h1 className="text-3xl font-bold mb-8 text-center underline">Create New Playlist</h1>
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
           <div className="mb-4">
@@ -146,6 +130,7 @@ const Page: React.FC = () => {
       </div>
 
     </div>
+    </ProtectedRoute>
   );
 };
 

@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import SideNav from './SideNav';
+import { AppWrapper } from '@/context';
+import { useAppContext } from '@/context';
 
 // Fetch Videos
 const getVideos = async () => {
@@ -69,15 +71,17 @@ const sampled = {
 
 const Dashboard: React.FC = () => {
   const [data, setData] = useState<DashboardData | null>(null);
-  const [videos, setVideos] = useState<Video[]>([]);
+  // const [videos, setVideos] = useState<Video[]>([]);
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const {videos} = useAppContext()
+  console.log(videos)
 
   useEffect(() => {
     const fetchData = async () => {
       const videoData = await getVideos();
       const playlistData = await getPlaylists();
-      setVideos(videoData.Videos);
+      // setVideos(videoData.Videos);
       setPlaylists(playlistData.Playlists);
       setLoading(false);
     };
@@ -86,12 +90,13 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
+    <AppWrapper>
     <div className="flex min-h-screen">
       {/* Sidebar */}
       <SideNav />
 
       {/* Main Content */}
-      <div className="flex-1 bg-gray-100 p-8">
+      <div className="flex-1 bg-gray-100 p-8 ml-64">
         <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
 
         {loading ? (
@@ -109,13 +114,14 @@ const Dashboard: React.FC = () => {
               <p className="text-3xl mt-4">{playlists.length}</p>
             </div>
             <div className="bg-white shadow-md rounded-lg p-6">
-              <h2 className="text-xl font-semibold">Total Visits</h2>
+              <h2 className="text-xl font-semibold">Total Visits </h2>
               <p className="text-3xl mt-4">{sampled.totalVisits}</p>
             </div>
           </div>
         )}
       </div>
     </div>
+    </AppWrapper>
   );
 };
 

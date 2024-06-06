@@ -1,13 +1,10 @@
 import MainLayout from "@/components/MainLayout";
-import Navbar from "@/components/Navbar";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="bg-black h-screen">
-      {/* <Navbar/>
-      <h1>Hello</h1>
+
+      {/* <h1>Hello</h1>
       <div className="ml-16 flex gap-4">
 
       <Link href={'/dashboard'} className="bg-blue-300 p-2 rounded-lg">All Videos</Link>

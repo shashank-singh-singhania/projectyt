@@ -44,3 +44,20 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
+
+
+@layer utilities {
+  .loader {
+    @apply border-8 border-t-8 border-t-blue-500 border-gray-200 rounded-full w-20 h-20;
+    animation: spin 1.5s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
