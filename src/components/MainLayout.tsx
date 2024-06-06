@@ -77,7 +77,7 @@ const MainLayout: React.FC = () => {
 
   return (
     <div
-      className="w-full bg-fixed bg-left-top bg-no-repeat bg-black"
+      className="w-full bg-fixed bg-left-top bg-no-repeat bg-black h-full"
       style={{ backgroundImage: "url('/bg1.png')" }}
     >
       <MobileNavbar />
@@ -110,7 +110,7 @@ const MainLayout: React.FC = () => {
 
             <div className="mt-12 mx-auto">
               <h2 className="text-2xl font-bold text-white mb-4 text-center md:text-left">Recommended Videos</h2>
-              <div className="flex flex-wrap gap-4 md:gap-8 px-6 md:px-0">
+              <div className="flex flex-wrap gap-4 md:gap-8 px-12 md:px-0">
                 {videos.map((video) => (
                   <Link key={video._id} href={`/video/${video._id}`}>
                     <VideoComponent video={video} />
@@ -121,7 +121,7 @@ const MainLayout: React.FC = () => {
 
             <div className="mt-8">
               <h2 className="text-2xl font-bold text-white mb-4 text-center md:text-left">Recommended Playlists</h2>
-              <div className="flex flex-wrap gap-4 md:gap-8 px-6 md:px-0">
+              <div className="flex flex-wrap gap-4 md:gap-8 px-12 md:px-0">
                 {playlists.map((playlist) => (
                   <Link key={playlist._id} href={`/playlist/${playlist._id}`}>
                     <PlaylistComponent playlist={playlist} />

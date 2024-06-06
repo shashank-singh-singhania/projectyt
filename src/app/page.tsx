@@ -2,7 +2,7 @@ import MainLayout from "@/components/MainLayout";
 
 export default function Home() {
   return (
-    <div className="bg-black h-screen">
+    <div className="bg-black h-full">
 
       {/* <h1>Hello</h1>
       <div className="ml-16 flex gap-4">
