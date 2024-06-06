@@ -29,7 +29,7 @@ interface Playlist {
 // Fetch Videos
 const getVideos = async () => {
   try {
-    const res = await fetch("/api/videos", {
+    const res = await fetch("https://projectyt-one.vercel.app/api/videos", {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -45,7 +45,7 @@ const getVideos = async () => {
 // Fetch Playlists
 const getPlaylists = async () => {
   try {
-    const res = await fetch("/api/playlists", {
+    const res = await fetch("https://projectyt-one.vercel.app/api/playlists", {
       cache: "no-store",
     });
     if (!res.ok) {
