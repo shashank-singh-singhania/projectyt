@@ -20,7 +20,7 @@ interface Playlist {
 
 const getVideos = async (): Promise<{ Videos: Video[] }> => {
   try {
-    const res = await fetch("http://localhost:3000/api/videos", {
+    const res = await fetch("/api/videos", {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -35,7 +35,7 @@ const getVideos = async (): Promise<{ Videos: Video[] }> => {
 
 const getPlaylists = async (): Promise<{ Playlists: Playlist[] }> => {
   try {
-    const res = await fetch("http://localhost:3000/api/playlists", {
+    const res = await fetch("/api/playlists", {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -113,7 +113,7 @@ const VideoList: React.FC = () => {
 
       const updatedLinks = [...selectedPlaylist.link, videoId];
 
-      const res = await fetch(`http://localhost:3000/api/playlists/${playlistId}`, {
+      const res = await fetch(`/api/playlists/${playlistId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -15,7 +15,7 @@ const EditvideoForm = ({id,title,description,img}:any) => {
     const handleSubmit= async(e:any)=>{
         e.preventDefault()
         try {
-            const res = await fetch(`http://localhost:3000/api/videos/${id}`,{
+            const res = await fetch(`/api/videos/${id}`,{
                 method:"PUT",
                 headers:{
                     "Content-type":"application/json"

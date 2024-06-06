@@ -21,7 +21,7 @@ const Embeddedvideo: React.FC<EmbeddedVideoProps> = ({ id }) => {
 
   useEffect(() => {
     // Fetch video data from API
-    fetch('http://localhost:3000/api/videos') // Replace with your API URL
+    fetch('/api/videos') // Replace with your API URL
       .then(response => response.json())
       .then(data => {
         setVideos(data.Videos);

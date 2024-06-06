@@ -34,7 +34,7 @@ interface PageProps {
 // Fetch Playlists
 const getPlaylists = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/playlists", {
+    const res = await fetch("/api/playlists", {
       cache: "no-store",
     });
     if (!res.ok) {

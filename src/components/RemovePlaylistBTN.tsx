@@ -11,7 +11,7 @@ const RemovePlaylistBTN = ({id}:any) => {
     const confirmed = confirm("Are you sure?")
 
     if (confirmed) {
-      const res = await fetch(`http://localhost:3000/api/playlists?id=${id}`,{
+      const res = await fetch(`/api/playlists?id=${id}`,{
         method:"DELETE"
       })
 

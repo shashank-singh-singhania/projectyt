@@ -1,8 +1,15 @@
 // About.tsx
 "use client";
+// import dotenv from "dotenv"
+// dotenv.config()
 
 import React from "react";
 // import SideNav from "@/components/SideNav";
+
+const domain = process.env.DOMAIN
+const uri = process.env.MONGODB_URI
+console.log(domain)
+console.log(uri)
 
 const About: React.FC = () => {
   return (

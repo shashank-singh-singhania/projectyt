@@ -2,13 +2,16 @@
 
 import React, { useEffect, useState } from 'react';
 import SideNav from './SideNav';
-import { AppWrapper } from '@/context';
-import { useAppContext } from '@/context';
+// import { AppWrapper } from '@/context';
+// import { useAppContext } from '@/context';
+
+const domain = process.env.DOMAIN
+console.log(domain)
 
 // Fetch Videos
 const getVideos = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/videos", {
+    const res = await fetch(`/api/videos`, {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -21,10 +24,12 @@ const getVideos = async () => {
   }
 };
 
+
+
 // Fetch Playlists
 const getPlaylists = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/playlists", {
+    const res = await fetch(`/api/playlists`, {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -71,17 +76,17 @@ const sampled = {
 
 const Dashboard: React.FC = () => {
   const [data, setData] = useState<DashboardData | null>(null);
-  // const [videos, setVideos] = useState<Video[]>([]);
+  const [videos, setVideos] = useState<Video[]>([]);
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const {videos} = useAppContext()
-  console.log(videos)
+  // const {videos} = useAppContext()
+  // console.log(videos)
 
   useEffect(() => {
     const fetchData = async () => {
       const videoData = await getVideos();
       const playlistData = await getPlaylists();
-      // setVideos(videoData.Videos);
+      setVideos(videoData.Videos);
       setPlaylists(playlistData.Playlists);
       setLoading(false);
     };
@@ -90,7 +95,7 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <AppWrapper>
+    // <AppWrapper>
     <div className="flex min-h-screen">
       {/* Sidebar */}
       <SideNav />
@@ -121,7 +126,7 @@ const Dashboard: React.FC = () => {
         )}
       </div>
     </div>
-    </AppWrapper>
+    // </AppWrapper>
   );
 };
 

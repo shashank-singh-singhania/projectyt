@@ -27,7 +27,7 @@ const EditPlaylistForm: React.FC<EditPlaylistFormProps> = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/playlists/${id}`, {
+        const res = await fetch(`/api/playlists/${id}`, {
           cache: "no-store",
         });
         if (!res.ok) {
@@ -46,7 +46,7 @@ const EditPlaylistForm: React.FC<EditPlaylistFormProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/api/playlists/${id}`, {
+      const res = await fetch(`/api/playlists/${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
@@ -70,7 +70,7 @@ const EditPlaylistForm: React.FC<EditPlaylistFormProps> = ({
       const confirmed = confirm("Are you sure?");
       if (confirmed) {
         const res = await fetch(
-          `http://localhost:3000/api/playlists/${id}?videoId=${videoId}`,
+          `/api/playlists/${id}?videoId=${videoId}`,
           {
             method: "DELETE",
           }

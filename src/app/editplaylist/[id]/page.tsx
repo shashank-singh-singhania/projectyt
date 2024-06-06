@@ -4,7 +4,7 @@ import React from 'react'
 
 const getVideoById =async(id:any)=>{
   try {
-    const res = await fetch(`http://localhost:3000/api/playlists/${id}`,{cache:"no-store"})
+    const res = await fetch(`/api/playlists/${id}`,{cache:"no-store"})
     if (!res.ok) {
       throw new Error("Failed to fetch videos")
     }

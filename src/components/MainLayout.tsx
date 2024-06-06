@@ -29,7 +29,7 @@ interface Playlist {
 // Fetch Videos
 const getVideos = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/videos", {
+    const res = await fetch("/api/videos", {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -45,7 +45,7 @@ const getVideos = async () => {
 // Fetch Playlists
 const getPlaylists = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/playlists", {
+    const res = await fetch("/api/playlists", {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -78,7 +78,7 @@ const MainLayout: React.FC = () => {
   return (
     <div
       className="w-full bg-fixed bg-left-top bg-no-repeat bg-black"
-      style={{ backgroundImage: "url('http://localhost:3000/bg1.png')" }}
+      style={{ backgroundImage: "url('/bg1.png')" }}
     >
       <MobileNavbar />
       <div className="hidden md:block">

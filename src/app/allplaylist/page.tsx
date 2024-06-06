@@ -15,7 +15,7 @@ interface Playlist {
 // Fetch Playlists
 const getPlaylists = async (): Promise<{ Playlists: Playlist[] }> => {
   try {
-    const res = await fetch("http://localhost:3000/api/playlists", {
+    const res = await fetch("/api/playlists", {
       cache: "no-store",
     });
     if (!res.ok) {
