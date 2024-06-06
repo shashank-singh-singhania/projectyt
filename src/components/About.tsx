@@ -21,7 +21,7 @@ const About: React.FC = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">What is Our Site?</h2>
             <p className="text-gray-300 text-lg">
-              Our site is a platform designed to provide users with high-quality video content across various categories. Whether you're looking for educational materials, entertainment, or inspirational videos, our site offers a curated selection to meet your needs. Our mission is to deliver an exceptional viewing experience through a user-friendly interface and a vast collection of videos.
+              Our site is a platform designed to provide users with high-quality video content across various categories. Whether you&apos;re looking for educational materials, entertainment, or inspirational videos, our site offers a curated selection to meet your needs. Our mission is to deliver an exceptional viewing experience through a user-friendly interface and a vast collection of videos.
             </p>
           </section>
           <section>
