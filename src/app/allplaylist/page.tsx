@@ -4,6 +4,7 @@ import MobileNavbar from "@/components/MobileNavbar";
 import PlaylistComponent from "@/components/PlaylistComponent";
 import Link from "next/link";
 import React, { useEffect, useState, useRef } from "react";
+import Footer from "@/components/Footer";
 
 // Define the Playlist type
 interface Playlist {
@@ -142,6 +143,7 @@ const Page: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

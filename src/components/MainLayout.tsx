@@ -100,7 +100,7 @@ const MainLayout: React.FC = () => {
               </p>
               <div className="mt-8 text-center md:text-left">
                 <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-4">
-                  About
+                  <Link href="/about">About</Link>
                 </button>
                 <button className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">
                   <Link href="/allplaylist">All Playlists</Link>
@@ -110,7 +110,7 @@ const MainLayout: React.FC = () => {
 
             <div className="mt-12 mx-auto">
               <h2 className="text-2xl font-bold text-white mb-4 text-center md:text-left">Recommended Videos</h2>
-              <div className="flex flex-wrap gap-4 md:gap-8 px-12 md:px-0">
+              <div className="flex flex-wrap gap-4 md:gap-8 px-10 md:px-0">
                 {videos.map((video) => (
                   <Link key={video._id} href={`/video/${video._id}`}>
                     <VideoComponent video={video} />
@@ -121,7 +121,7 @@ const MainLayout: React.FC = () => {
 
             <div className="mt-8">
               <h2 className="text-2xl font-bold text-white mb-4 text-center md:text-left">Recommended Playlists</h2>
-              <div className="flex flex-wrap gap-4 md:gap-8 px-12 md:px-0">
+              <div className="flex flex-wrap gap-4 md:gap-8 px-10 md:px-0">
                 {playlists.map((playlist) => (
                   <Link key={playlist._id} href={`/playlist/${playlist._id}`}>
                     <PlaylistComponent playlist={playlist} />

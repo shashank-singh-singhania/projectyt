@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import MainLayout from "@/components/MainLayout";
 
 export default function Home() {
@@ -13,9 +14,10 @@ export default function Home() {
       <Link href={'/dashboard/allplaylist'} className="bg-blue-300 p-2 rounded-lg">All Playlists</Link>
       </div> */}
 
-      <div className="">
+      <div className="bg-black h-full">
         <MainLayout />
       </div>
+      <Footer/>
     </div>
   );
 }

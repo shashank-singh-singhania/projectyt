@@ -5,6 +5,7 @@ import MobileNavbar from "@/components/MobileNavbar";
 import VideoComponent from "@/components/VideoComponent";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Footer from "@/components/Footer";
 
 // Type definitions
 interface Video {
@@ -118,6 +119,7 @@ const Page = ({ params }: PageProps) => {
           ))}
         </div>
       </div>
+      {/* <Footer/> */}
     </>
   );
 };
