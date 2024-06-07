@@ -4,7 +4,7 @@ import React from 'react'
 
 const getVideoById =async(id:any)=>{
   try {
-    const res = await fetch(`/api/playlists/${id}`,{cache:"no-store"})
+    const res = await fetch(`https://projectyt-five.vercel.app/api/playlists/${id}`,{cache:"no-store"})
     if (!res.ok) {
       throw new Error("Failed to fetch videos")
     }
@@ -14,6 +14,7 @@ const getVideoById =async(id:any)=>{
     console.log(error)
   }
 }
+
 
 const page = async({params}:any) => {
 
